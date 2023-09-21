@@ -120,8 +120,6 @@ git log --oneline
 
 В качестве результата работы по всем заданиям прилоагаю ссылки на репозитории в github, gitlab.  
 
-Прилагаю:
-
 #### *https://github.com/RikLedger/devops-netology.git*
 #### *https://gitlab.com/RikLedger/devops-netology.git*
  
