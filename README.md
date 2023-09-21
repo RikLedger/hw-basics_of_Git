@@ -1,27 +1,5 @@
 # Домашнее задание к занятию «Основы Git»
 
-### Цель задания
-
-В результате выполнения задания вы:
-
-* научитесь работать с Git, как с распределённой системой контроля версий; 
-* сможете создавать и настраивать репозиторий для работы в GitHub, GitLab и Bitbucket; 
-* попрактикуетесь работать с тегами;
-* поработаете с Git при помощи визуального редактора.
-
-### Чеклист готовности к домашнему заданию
-
-1. Установлена консольная утилита для работы с Git.
-2. Есть возможность зарегистрироваться на GitHub, GitLab.
-3. Регистрация на Bitbucket не является обязательной. 
-
-
-### Инструкция к заданию
-
-1. В личном кабинете отправьте на проверку ссылки на ваши репозитории.
-2. Любые вопросы по решению задач задавайте в чате учебной группы.
-
-------
 
 ## Задание 1. Знакомимся с GitLab и Bitbucket 
 
@@ -39,24 +17,29 @@
 
 Создадим аккаунт в GitLab, если у вас его ещё нет:
 
-1. GitLab. Для [регистрации](https://gitlab.com/users/sign_up)  можно использовать аккаунт Google, GitHub и другие. 
-1. После регистрации или авторизации в GitLab создайте новый проект, нажав на ссылку `Create a projet`. 
+1.1. GitLab. Для [регистрации](https://gitlab.com/users/sign_up)  можно использовать аккаунт Google, GitHub и другие. 
+1.2. После регистрации или авторизации в GitLab создайте новый проект, нажав на ссылку `Create a projet`. 
 Желательно назвать также, как и в GitHub — `devops-netology` и `visibility level`, выбрать `Public`.
-1. Галочку `Initialize repository with a README` лучше не ставить, чтобы не пришлось разрешать конфликты.
-1. Если вы зарегистрировались при помощи аккаунта в другой системе и не указали пароль, то увидите сообщение:
+1.3. Галочку `Initialize repository with a README` лучше не ставить, чтобы не пришлось разрешать конфликты.
+1.4. Если вы зарегистрировались при помощи аккаунта в другой системе и не указали пароль, то увидите сообщение:
 `You won't be able to pull or push project code via HTTPS until you set a password on your account`. 
 Тогда перейдите [по ссылке](https://gitlab.com/profile/password/edit) из этого сообщения и задайте пароль. 
 Если вы уже умеете пользоваться SSH-ключами, то воспользуйтесь этой возможностью (подробнее про SSH мы поговорим в следующем учебном блоке).
-1. Перейдите на страницу созданного вами репозитория, URL будет примерно такой:
+1.5. Перейдите на страницу созданного вами репозитория, URL будет примерно такой:
 https://gitlab.com/YOUR_LOGIN/devops-netology. Изучите предлагаемые варианты для начала работы в репозитории в секции
 `Command line instructions`. 
-1. Запомните вывод команды `git remote -v`.
-1. Из-за того, что это будет наш дополнительный репозиторий, ни один вариант из перечисленных в инструкции (на странице 
+1.6. Запомните вывод команды `git remote -v`.
+
+![1-1](./Git-Base-01.jpg)
+   
+1.7. Из-за того, что это будет наш дополнительный репозиторий, ни один вариант из перечисленных в инструкции (на странице 
 вновь созданного репозитория) нам не подходит. Поэтому добавляем этот репозиторий, как дополнительный `remote`, к созданному
 репозиторию в рамках предыдущего домашнего задания:
 `git remote add gitlab https://gitlab.com/YOUR_LOGIN/devops-netology.git`.
-1. Отправьте изменения в новый удалённый репозиторий `git push -u gitlab main`.
-1. Обратите внимание, как изменился результат работы команды `git remote -v`.
+1.8. Отправьте изменения в новый удалённый репозиторий `git push -u gitlab main`.
+1.9. Обратите внимание, как изменился результат работы команды `git remote -v`.
+   
+![1-2](./Git-Base-02.jpg)
 
 #### Как изменить видимость репозитория в  GitLab — сделать его публичным 
 
@@ -66,80 +49,57 @@ https://gitlab.com/YOUR_LOGIN/devops-netology. Изучите предлагае
 * Измените видимость проекта на Public.
 * Нажмите «Сохранить изменения».
 
-### Bitbucket* (задание со звёздочкой) 
-
-Это самостоятельное задание, его выполнение необязательно.
-____
-
-Теперь необходимо проделать всё то же самое с [Bitbucket](https://bitbucket.org/). 
-
-1. Обратите внимание, что репозиторий должен быть публичным — отключите галочку `private repository` при создании репозитория.
-1. На вопрос `Include a README?` отвечайте отказом. 
-1. В отличии от GitHub и GitLab в Bitbucket репозиторий должен принадлежать проекту, поэтому во время создания репозитория 
-надо создать и проект, который можно назвать, например, `netology`.
-1. Аналогично GitLab на странице вновь созданного проекта выберите `https`, чтобы получить ссылку, и добавьте этот репозиторий, как 
-`git remote add bitbucket ...`.
-1. Обратите внимание, как изменился результат работы команды `git remote -v`.
-
-Если всё проделано правильно, то результат команды `git remote -v` должен быть следующий:
-
-```bash
-$ git remote -v
-bitbucket https://andreyborue@bitbucket.org/andreyborue/devops-netology.git (fetch)
-bitbucket https://andreyborue@bitbucket.org/andreyborue/devops-netology.git (push)
-gitlab	  https://gitlab.com/andrey.borue/devops-netology.git (fetch)
-gitlab	  https://gitlab.com/andrey.borue/devops-netology.git (push)
-origin	  https://github.com/andrey-borue/devops-netology.git (fetch)
-origin	  https://github.com/andrey-borue/devops-netology.git (push)
-```
-
-Дополнительно можете добавить удалённые репозитории по `ssh`, тогда результат будет примерно такой:
-
-```bash
-git remote -v
-bitbucket	git@bitbucket.org:andreyborue/devops-netology.git (fetch)
-bitbucket	git@bitbucket.org:andreyborue/devops-netology.git (push)
-bitbucket-https	https://andreyborue@bitbucket.org/andreyborue/devops-netology.git (fetch)
-bitbucket-https	https://andreyborue@bitbucket.org/andreyborue/devops-netology.git (push)
-gitlab	git@gitlab.com:andrey.borue/devops-netology.git (fetch)
-gitlab	git@gitlab.com:andrey.borue/devops-netology.git (push)
-gitlab-https	https://gitlab.com/andrey.borue/devops-netology.git (fetch)
-gitlab-https	https://gitlab.com/andrey.borue/devops-netology.git (push)
-origin	git@github.com:andrey-borue/devops-netology.git (fetch)
-origin	git@github.com:andrey-borue/devops-netology.git (push)
-origin-https	https://github.com/andrey-borue/devops-netology.git (fetch)
-origin-https	https://github.com/andrey-borue/devops-netology.git (push)
-```
-
-Выполните push локальной ветки `main` в новые репозитории. 
-
-Подсказка: `git push -u gitlab main`. На этом этапе история коммитов во всех трёх репозиториях должна совпадать. 
-
 ## Задание 2. Теги
 
 Представьте ситуацию, когда в коде была обнаружена ошибка — надо вернуться на предыдущую версию кода,
 исправить её и выложить исправленный код в продакшн. Мы никуда не будем выкладывать код, но пометим некоторые коммиты тегами и создадим от них ветки. 
 
-1. Создайте легковестный тег `v0.0` на HEAD-коммите и запуште его во все три добавленных на предыдущем этапе `upstream`.
-1. Аналогично создайте аннотированный тег `v0.1`.
-1. Перейдите на страницу просмотра тегов в GitHab (и в других репозиториях) и посмотрите, чем отличаются созданные теги. 
-    * в GitHub — https://github.com/YOUR_ACCOUNT/devops-netology/releases;
-    * в GitLab — https://gitlab.com/YOUR_ACCOUNT/devops-netology/-/tags;
-    * в Bitbucket — список тегов расположен в выпадающем меню веток на отдельной вкладке. 
-
+2.1. Создайте легковестный тег `v0.0` на HEAD-коммите и запуште его во все три добавленных на предыдущем этапе `upstream`.
+```shell
+git tag v0.0 
+git push origin v0.0 
+git push gitlab v0.0 
+```
+2.2. Аналогично создайте аннотированный тег `v0.1`.
+```shell
+git tag v0.1 
+git push origin v0.1 
+git push gitlab v0.1 
+```
+   
+2.3. Перейдите на страницу просмотра тегов в GitHab (и в других репозиториях) и посмотрите, чем отличаются созданные теги. 
+    * в GitHub — https://github.com/RikLedger/devops-netology/releases;
+![1-3](./Git-Base-03.jpg)
+    * в GitLab — https://gitlab.com/RikLedger/devops-netology/-/tags;
+![1-4](./Git-Base-04.jpg)
+  
 ## Задание 3. Ветки 
 
 Давайте посмотрим, как будет выглядеть история коммитов при создании веток. 
 
-1. Переключитесь обратно на ветку `main`, которая должна быть связана с веткой `main` репозитория на `github`.
-1. Посмотрите лог коммитов и найдите хеш коммита с названием `Prepare to delete and move`, который был создан в пределах предыдущего домашнего задания. 
-1. Выполните `git checkout` по хешу найденного коммита. 
-1. Создайте новую ветку `fix`, базируясь на этом коммите `git switch -c fix`.
-1. Отправьте новую ветку в репозиторий на GitHub `git push -u origin fix`.
-1. Посмотрите, как визуально выглядит ваша схема коммитов: https://github.com/YOUR_ACCOUNT/devops-netology/network. 
-1. Теперь измените содержание файла `README.md`, добавив новую строчку.
-1. Отправьте изменения в репозиторий и посмотрите, как изменится схема на странице https://github.com/YOUR_ACCOUNT/devops-netology/network 
+3.1. Переключитесь обратно на ветку `main`, которая должна быть связана с веткой `main` репозитория на `github`.
+```shell
+git checkout origin/main
+```
+3.2. Посмотрите лог коммитов и найдите хеш коммита с названием `Prepare to delete and move`, который был создан в пределах предыдущего домашнего задания.
+```shell
+git log --oneline
+```    
+3.3. Выполните `git checkout` по хешу найденного коммита. 
+3.4. Создайте новую ветку `fix`, базируясь на этом коммите `git switch -c fix`.
+3.5. Отправьте новую ветку в репозиторий на GitHub `git push -u origin fix`.
+3.6. Посмотрите, как визуально выглядит ваша схема коммитов: https://github.com/YOUR_ACCOUNT/devops-netology/network.
+
+ ![1-5](./Git-Base-05.jpg)
+
+3.7. Теперь измените содержание файла `README.md`, добавив новую строчку.
+3.8. Отправьте изменения в репозиторий и посмотрите, как изменится схема на странице https://github.com/YOUR_ACCOUNT/devops-netology/network
+ 
+ ![1-6](./Git-Base-06.jpg)
+
 и как изменится вывод команды `git log`.
+
+ ![1-7](./Git-Base-07.jpg)
 
 ## Задание 4. Упрощаем себе жизнь
 
@@ -158,5 +118,12 @@ origin-https	https://github.com/andrey-borue/devops-netology.git (push)
 Если вверху экрана выбрать свою операционную систему, можно посмотреть горячие клавиши для работы с Git. 
 Подробней о визуальном интерфейсе мы расскажем на одной из следующих лекций.
 
-*В качестве результата работы по всем заданиям приложите ссылки на ваши репозитории в GitHub, GitLab и Bitbucket*.  
+#### *Да, программа удобная, в процессе обучения посмотрю ее поподробней*
+
+*В качестве результата работы по всем заданиям прилоагаю ссылки на репозитории в github, gitlab*.  
+
+*Прилагаю:*
+
+#### *https://github.com/RikLedger/devops-netology.git*
+#### *https://gitlab.com/RikLedger/devops-netology.git*
  
